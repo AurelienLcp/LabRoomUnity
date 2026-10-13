@@ -1,5 +1,6 @@
 # ===========================================================================================================
 # Unity: folders Unity regenerates when the project is opened (never commit these)
+# Library/ also holds the Multiplayer Play Mode virtual players (Library/VP).
 # ===========================================================================================================
 /[Ll]ibrary/
 /[Tt]emp/
@@ -15,14 +16,24 @@
 # Builds and packages (the Quest APK is ~390 MB, over GitHub's 100 MB file limit)
 *.apk
 *.aab
+*.obb
+*.idsig
+*.symbols.zip
 *.unitypackage
 *_BurstDebugInformation_DoNotShip/
+*_BackUpThisFolder_ButDontShipItWithYourGame/
+
+# Android signing keys: keep them outside the repository
+*.keystore
+*.jks
 
 # IDE / OS files
 .vs/
 .vscode/
 .idea/
 .gradle/
+.consulo/
+ExportedObj/
 *.csproj
 *.unityproj
 *.sln
@@ -31,6 +42,7 @@
 *.tmp
 *.user
 *.userprefs
+*.DotSettings.user
 *.pidb
 *.booproj
 *.svd
@@ -42,6 +54,7 @@
 *.pdb.meta
 *.mdb.meta
 sysinfo.txt
+mono_crash.*
 crashlytics-buildid.txt
 .DS_Store
 Thumbs.db
@@ -49,6 +62,10 @@ desktop.ini
 
 # Asset .meta files are always committed (they hold the GUIDs scenes use to reference assets)
 !/[Aa]ssets/**/*.meta
+
+# Files the editor drops into Assets: the Rider plugin, and the scenes play-mode tests leave behind
+/[Aa]ssets/Plugins/Editor/JetBrains*
+/[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 
 # ===========================================================================================================
 # Over GitHub's 100 MB file limit - and regenerated automatically, so nothing is lost:
@@ -62,3 +79,15 @@ desktop.ini
 # The Avatars SDK copies the preset zips into StreamingAssets only while building and removes them afterwards
 /[Aa]ssets/StreamingAssets/SampleAssets/
 /[Aa]ssets/StreamingAssets/SampleAssets.meta
+
+# ===========================================================================================================
+# Package samples imported into Assets/Samples (Package Manager > Samples > Import).
+# They ARE committed, because the project's own code and prefabs depend on them:
+#   - Meta Avatars SDK "Sample Scenes": SampleAvatarEntity, OvrAvatarAnimationBehavior, and the humanoid rig
+#     with its default animations in Scenes/LegsNetworkLoopback (used by Assets/Prefabs/AvatarNGOMeta.prefab).
+#   - Vivox "Chat Channel Sample": VivoxVoiceManager (used by Assets/Scripts/Audio/VivoxPlayer.cs).
+# Only the sample environments are left out (120 MB; Directional_flipped.hdr alone is 76 MB). Nothing outside
+# the Meta sample scenes references them, and importing the sample again restores them with the same GUIDs.
+# ===========================================================================================================
+/[Aa]ssets/Samples/Meta Avatars SDK/*/Sample Scenes/Environments/
+/[Aa]ssets/Samples/Meta Avatars SDK/*/Sample Scenes/Environments.meta
