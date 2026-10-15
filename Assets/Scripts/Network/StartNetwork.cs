@@ -26,10 +26,9 @@ public class StartNetwork : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        var networkSettings = NetworkSettings.Instance;
-        ipAddress = networkSettings.IpAddress;
-#if UNITY_STANDALONE_WIN //|| UNITY_EDITOR
-            //experienceManager.RemovePanelAndAvatar();
+        // var networkSettings = NetworkSettings.Instance;
+        // ipAddress = networkSettings.IpAddress;
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR
             StartServer();
 #else
         /*if(SceneManager.GetActiveScene().name == "XRRoomUpdate") */
@@ -96,7 +95,7 @@ public class StartNetwork : MonoBehaviour
     public IEnumerator WaitForStartClient()
     {
         //yield on a new YieldInstruction that waits for 6 seconds.
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(10);
         StartClient();
     }
 }
