@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Home.unity
+    guid: 70fd384e333415046b62603fa5f32919
+  - enabled: 1
     path: Assets/Scenes/LabRoom_MetaMR.unity
     guid: 777cb707972fde74fbf9f425947e4616
   - enabled: 1

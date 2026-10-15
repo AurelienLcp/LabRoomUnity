@@ -45,7 +45,8 @@ public class SpatialAnchorManager : MonoBehaviour
             LoadSavedAnchors();
         }
 
-        anchorsNumberText.text = "Number of registered anchors: " + anchors.Count;
+        if(anchorsNumberText != null)
+            anchorsNumberText.text = "Number of registered anchors: " + anchors.Count;
     }
 
     // Update is called once per frame
@@ -80,14 +81,18 @@ public class SpatialAnchorManager : MonoBehaviour
                     DestroyLastCreatedAnchor();
                 else
                     DestroyAllCreatedAnchor();
-                anchorsNumberText.text = $"Number of registered anchors: {anchors.Count}";
+                
+                if (anchorsNumberText != null)
+                    anchorsNumberText.text = $"Number of registered anchors: {anchors.Count}";
             }
 
             if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.RTouch) && anchors.Count >= 3 || isLoadedAnchors && anchors.Count >= 3)
             {
-            anchorsNumberText.text = $"Anchors loaded, environment can be started";
-            
-        }
+                if (anchorsNumberText != null)
+                    anchorsNumberText.text = $"Anchors loaded, environment can be started";
+                SceneManager.LoadScene(sceneToLoad);
+                
+            }
     }
     private void PreviewAndPlacementOnScene()
     {
@@ -120,7 +125,8 @@ public class SpatialAnchorManager : MonoBehaviour
         }
         Guid anchorGuid = workingAnchor.Uuid;
         anchors.Add(workingAnchor);
-        anchorsNumberText.text = $"Number of registered anchors: {anchors.Count}";
+        if (anchorsNumberText != null)
+            anchorsNumberText.text = $"Number of registered anchors: {anchors.Count}";
         lastCreatedAnchor = workingAnchor;
 
         uuidText.text = "UUID : " + anchorGuid.ToString();

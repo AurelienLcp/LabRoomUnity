@@ -19,10 +19,12 @@ public class AnchorLoader : MonoBehaviour
         anchorPrefab = spatialAnchorManager.anchorPrefab;
         _onAnchorLocalized = OnLocalized;
     }
+
     public void LogMessage(string mess)
     {
         message = message + mess + "\n";
-        logsText.text = message;
+        if(logsText != null)
+            logsText.text = message;
     }
     /// <summary>
     /// Load persistent anchors
