@@ -9,6 +9,11 @@ Packages: Meta XR All-in-One SDK 85.0.0 (core, interaction, MRUK, platform, audi
 Meta Avatars SDK 40.0.1 (+ sample preset avatars), Unity OpenXR 1.16.1 with the Meta XR feature, Input System 1.18.0.
 Render pipeline: Built-in (unchanged; the URP 17.3 package is installed but inactive, only because the Meta Avatars
 shaders #include URP files and otherwise fail Quest builds). Colour space: Linear (switched from Gamma: the Meta XR SDK refuses OpenXR Quest builds in Gamma).
+Shader build settings: Meta/Lit (material of the Touch controller models shown by OVRInteractionComprehensive) borrows
+the passes of URP Lit; with no URP asset active, their keywords would make every build list ~72 billion variants.
+Editor/LabRoomShaderBuildSettings strips the URP-only keyword sets (Project Settings > Graphics > Shader Build Settings >
+Keyword Declaration Overrides). Applied when the editor loads and by 1 Configure Project, checked by 3 Validate, removed
+automatically if a URP asset becomes active. Editor/LabRoomStripUnusedSRPShaderPasses then drops the remaining URP passes.
 
 WHAT IS IN THE MR SCENE
   LabRoom (unchanged: Scan_Detailed, Blockout, Hybrid, LabRoomOverlay toggles/opacity)
@@ -88,4 +93,4 @@ DIAGNOSTICS
   Logs/LabRoomMetaMR.log (setup steps), Logs/LabRoomMetaMR_Validation.txt (checklist),
   Logs/LabRoomMetaMR_Compile.log (compiler/console errors). Editor/Diagnostics also runs commands written to
   Library/LabRoomMetaMR.command (configure, build-scene, validate, android, apk, avatar-input, avatar-playtest,
-  refresh) for automation.
+  shader-settings, refresh) for automation.

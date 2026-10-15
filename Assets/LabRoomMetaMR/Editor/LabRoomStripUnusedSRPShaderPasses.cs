@@ -2,7 +2,8 @@
 // carry SubShaders for the Universal Render Pipeline (the URP package is installed only so those passes' #includes
 // resolve - no URP asset is active). The Built-in pipeline never selects a SubShader tagged for another render
 // pipeline, so this build step removes those variants before compilation: shorter builds, smaller shader data.
-// It does nothing when an SRP asset is active.
+// It does nothing when an SRP asset is active. Unity lists a pass's variants before calling this step:
+// LabRoomShaderBuildSettings keeps that list short by stripping the URP-only keywords at import.
 using System.Collections.Generic;
 using UnityEditor.Build;
 using UnityEditor.Rendering;

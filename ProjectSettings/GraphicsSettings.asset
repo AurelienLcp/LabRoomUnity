@@ -60,7 +60,171 @@ GraphicsSettings:
   m_RenderPipelineGlobalSettingsMap:
     UnityEngine.Rendering.Universal.UniversalRenderPipeline: {fileID: 11400000, guid: fe436f7c721ea4944a58321bf80c6eef, type: 2}
   m_ShaderBuildSettings:
-    keywordDeclarationOverrides: []
+    keywordDeclarationOverrides:
+    - keywords:
+      - name: _
+        keepInBuild: 1
+      - name: _MAIN_LIGHT_SHADOWS
+        keepInBuild: 0
+      - name: _MAIN_LIGHT_SHADOWS_CASCADE
+        keepInBuild: 0
+      - name: _MAIN_LIGHT_SHADOWS_SCREEN
+        keepInBuild: 0
+      variantGenerationMode: 0
+    - keywords:
+      - name: _
+        keepInBuild: 1
+      - name: _ADDITIONAL_LIGHTS_VERTEX
+        keepInBuild: 0
+      - name: _ADDITIONAL_LIGHTS
+        keepInBuild: 0
+      variantGenerationMode: 0
+    - keywords:
+      - name: _
+        keepInBuild: 1
+      - name: _ADDITIONAL_LIGHT_SHADOWS
+        keepInBuild: 0
+      variantGenerationMode: 0
+    - keywords:
+      - name: _
+        keepInBuild: 1
+      - name: EVALUATE_SH_MIXED
+        keepInBuild: 0
+      - name: EVALUATE_SH_VERTEX
+        keepInBuild: 0
+      variantGenerationMode: 0
+    - keywords:
+      - name: _
+        keepInBuild: 1
+      - name: _REFLECTION_PROBE_BLENDING
+        keepInBuild: 0
+      variantGenerationMode: 0
+    - keywords:
+      - name: _
+        keepInBuild: 1
+      - name: _REFLECTION_PROBE_BOX_PROJECTION
+        keepInBuild: 0
+      variantGenerationMode: 0
+    - keywords:
+      - name: _
+        keepInBuild: 1
+      - name: _REFLECTION_PROBE_ATLAS
+        keepInBuild: 0
+      variantGenerationMode: 0
+    - keywords:
+      - name: _
+        keepInBuild: 1
+      - name: REFLECTION_PROBE_ROTATION
+        keepInBuild: 0
+      variantGenerationMode: 0
+    - keywords:
+      - name: _
+        keepInBuild: 1
+      - name: _SHADOWS_SOFT
+        keepInBuild: 0
+      - name: _SHADOWS_SOFT_LOW
+        keepInBuild: 0
+      - name: _SHADOWS_SOFT_MEDIUM
+        keepInBuild: 0
+      - name: _SHADOWS_SOFT_HIGH
+        keepInBuild: 0
+      variantGenerationMode: 0
+    - keywords:
+      - name: _
+        keepInBuild: 1
+      - name: _SCREEN_SPACE_OCCLUSION
+        keepInBuild: 0
+      variantGenerationMode: 0
+    - keywords:
+      - name: _
+        keepInBuild: 1
+      - name: _SCREEN_SPACE_IRRADIANCE
+        keepInBuild: 0
+      variantGenerationMode: 0
+    - keywords:
+      - name: _
+        keepInBuild: 1
+      - name: _DBUFFER_MRT1
+        keepInBuild: 0
+      - name: _DBUFFER_MRT2
+        keepInBuild: 0
+      - name: _DBUFFER_MRT3
+        keepInBuild: 0
+      variantGenerationMode: 0
+    - keywords:
+      - name: _
+        keepInBuild: 1
+      - name: _LIGHT_COOKIES
+        keepInBuild: 0
+      variantGenerationMode: 0
+    - keywords:
+      - name: _
+        keepInBuild: 1
+      - name: _LIGHT_LAYERS
+        keepInBuild: 0
+      variantGenerationMode: 0
+    - keywords:
+      - name: _
+        keepInBuild: 1
+      - name: _CLUSTER_LIGHT_LOOP
+        keepInBuild: 0
+      variantGenerationMode: 0
+    - keywords:
+      - name: _
+        keepInBuild: 1
+      - name: _WRITE_RENDERING_LAYERS
+        keepInBuild: 0
+      variantGenerationMode: 0
+    - keywords:
+      - name: _
+        keepInBuild: 1
+      - name: _RENDER_PASS_ENABLED
+        keepInBuild: 0
+      variantGenerationMode: 0
+    - keywords:
+      - name: _
+        keepInBuild: 1
+      - name: _GBUFFER_NORMALS_OCT
+        keepInBuild: 0
+      variantGenerationMode: 0
+    - keywords:
+      - name: _
+        keepInBuild: 1
+      - name: _CASTING_PUNCTUAL_LIGHT_SHADOW
+        keepInBuild: 0
+      variantGenerationMode: 0
+    - keywords:
+      - name: _
+        keepInBuild: 1
+      - name: LIGHTMAP_BICUBIC_SAMPLING
+        keepInBuild: 0
+      variantGenerationMode: 0
+    - keywords:
+      - name: _
+        keepInBuild: 1
+      - name: USE_LEGACY_LIGHTMAPS
+        keepInBuild: 0
+      variantGenerationMode: 0
+    - keywords:
+      - name: _
+        keepInBuild: 1
+      - name: PROBE_VOLUMES_L1
+        keepInBuild: 0
+      - name: PROBE_VOLUMES_L2
+        keepInBuild: 0
+      variantGenerationMode: 0
+    - keywords:
+      - name: _
+        keepInBuild: 1
+      - name: DOTS_INSTANCING_ON
+        keepInBuild: 0
+      variantGenerationMode: 0
+    - keywords:
+      - name: _
+        keepInBuild: 1
+      - name: DEBUG_DISPLAY
+        keepInBuild: 0
+      variantGenerationMode: 0
   m_LightsUseLinearIntensity: 0
   m_LightsUseColorTemperature: 0
   m_LogWhenShaderIsCompiled: 0

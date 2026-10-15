@@ -2,7 +2,8 @@
 //
 // Menu: Lab Room > Meta MR
 //   1. Configure Project for Quest      XR Plug-in Management (OpenXR + Meta XR feature), player settings, Meta project
-//                                        config (passthrough, anchors, hands), Android manifest, build scenes.
+//                                        config (passthrough, anchors, hands), Android manifest, build scenes, shader
+//                                        build settings (LabRoomShaderBuildSettings).
 //   2. Create or Rebuild MR Scene        copies LabRoom_Overlay.unity to LabRoom_MetaMR.unity (the original is never
 //                                        opened or saved) and adds the Meta rig, passthrough windows, avatar and anchors.
 //   3. Validate                          checks everything and writes Logs/LabRoomMetaMR_Validation.txt.
@@ -147,6 +148,7 @@ namespace LabRoom.MetaMR.EditorTools
                 case "avatar-input": Run("Patch avatar input", PatchAvatarInput); break;
                 case "collect-windows": Run("Collect passthrough window portals", CollectWindowPortals); break;
                 case "avatar-playtest": Run("Avatar tracking play-mode test", LabRoomMetaMRAvatarPlayTest.Begin); break;
+                case "shader-settings": Run("Shader build settings", LabRoomShaderBuildSettings.Apply); break;
                 default: Log("Unknown command: " + command); break;
             }
         }
@@ -235,6 +237,7 @@ namespace LabRoom.MetaMR.EditorTools
             Log(File.Exists(Path.Combine(ProjectRoot, ManifestPath)) ? "Android manifest generated: " + ManifestPath : "Android manifest NOT generated");
 
             EnsureBuildScenes();
+            LabRoomShaderBuildSettings.Apply();
             AssetDatabase.SaveAssets();
         }
 
@@ -737,6 +740,8 @@ namespace LabRoom.MetaMR.EditorTools
             Check(!manifest.Contains("com.unity.xr.oculus"), "Oculus XR Plugin not installed alongside OpenXR");
             Check(manifest.Contains("\"com.unity.render-pipelines.universal\""), "URP package present (Meta Avatars shaders include URP files)");
             Check(GraphicsSettings.defaultRenderPipeline == null && QualitySettings.renderPipeline == null, "Built-in Render Pipeline still active (no URP asset assigned)");
+            Check(LabRoomShaderBuildSettings.IsApplied(), "Shader build settings strip the URP-only keywords (builds skip the URP Lit variants)",
+                $"{LabRoomShaderBuildSettings.CountApplied()} keyword sets stripped");
             Check(AssetDatabase.LoadAssetAtPath<GameObject>(CameraRigPrefabPath) != null, "Meta core package resolved (OVRCameraRig prefab)");
             Check(AssetDatabase.LoadAssetAtPath<GameObject>(AvatarSdkPrefabPath) != null, "AvatarSDK building-block prefab resolved");
 
