@@ -383,7 +383,10 @@ namespace LabRoom.MetaMR.EditorTools
             }
             var manager = rigGo.GetComponent<OVRManager>();
             var so = new SerializedObject(manager);
-            so.FindProperty("_trackingOriginType").intValue = (int)OVRManager.TrackingOrigin.FloorLevel;
+            // Stage = floor-based space that the headset's "Reset view" does not move. With Unity OpenXR, FloorLevel
+            // turns recentering on: Unity regenerates its space on the first recenter and spatial anchors placed before
+            // it end up offset. The room is placed from spatial anchors, so it must not follow recenters anyway.
+            so.FindProperty("_trackingOriginType").intValue = (int)OVRManager.TrackingOrigin.Stage;
             so.FindProperty("isInsightPassthroughEnabled").boolValue = true;
             so.ApplyModifiedPropertiesWithoutUndo();
 
@@ -885,7 +888,7 @@ namespace LabRoom.MetaMR.EditorTools
             if (manager != null)
             {
                 var so = new SerializedObject(manager);
-                Check(so.FindProperty("_trackingOriginType").intValue == (int)OVRManager.TrackingOrigin.FloorLevel, "Tracking origin: floor level");
+                Check(so.FindProperty("_trackingOriginType").intValue == (int)OVRManager.TrackingOrigin.Stage, "Tracking origin: stage (Reset view does not move the anchors)");
                 Check(manager.isInsightPassthroughEnabled, "OVRManager: insight passthrough enabled");
             }
             var activeCams = all.Where(g => g.activeInHierarchy).Select(g => g.GetComponent<Camera>()).Where(c => c != null && c.enabled).ToList();

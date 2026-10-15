@@ -14,11 +14,14 @@ the passes of URP Lit; with no URP asset active, their keywords would make every
 Editor/LabRoomShaderBuildSettings strips the URP-only keyword sets (Project Settings > Graphics > Shader Build Settings >
 Keyword Declaration Overrides). Applied when the editor loads and by 1 Configure Project, checked by 3 Validate, removed
 automatically if a URP asset becomes active. Editor/LabRoomStripUnusedSRPShaderPasses then drops the remaining URP passes.
+Tracking origin: Stage in Home and LabRoom_MetaMR (with Unity OpenXR: floor-based, recentering off). Holding the Meta
+button (Reset view) moves neither the room nor the spatial anchors. With Floor Level, Unity OpenXR regenerates its space
+on the first recenter and anchors placed before it end up offset.
 
 WHAT IS IN THE MR SCENE
   LabRoom (unchanged: Scan_Detailed, Blockout, Hybrid, LabRoomOverlay toggles/opacity)
     MR_PassthroughWindows        LabRoomPassthroughWindows + one portal quad per window pane
-  OVRCameraRig                   Meta rig (floor-level tracking, passthrough enabled), placed where the fly camera was
+  OVRCameraRig                   Meta rig (stage tracking, passthrough enabled), placed where the fly camera was
     TrackingSpace/LocalAvatar    Meta AvatarEntity + LabLocalAvatarBehaviour + LabAvatarInputManager
                                  (your head, controllers and tracked hands drive the avatar - see below)
     CenterEyeAnchor/MR_PassthroughAlphaGuard
