@@ -146,6 +146,8 @@ PlayerSettings:
   bundleVersion: 1.0
   preloadedAssets:
   - {fileID: 11400000, guid: c69932d4bb9a4e14abb20dc4d676987c, type: 2}
+  - {fileID: -2776906611141521614, guid: d3b291525e7b48b4493c8fdb58983a59, type: 2}
+  - {fileID: -2215710297109286945, guid: af036ce3eb2f5604eb19cd9ad9026264, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -688,6 +690,7 @@ PlayerSettings:
   webWasm2023: 0
   webEnableSubmoduleStrippingCompatibility: 0
   scriptingDefineSymbols:
+    Android: PSI_TCP_STREAMS
     Standalone: PSI_TCP_STREAMS
   additionalCompilerArguments: {}
   platformArchitecture: {}

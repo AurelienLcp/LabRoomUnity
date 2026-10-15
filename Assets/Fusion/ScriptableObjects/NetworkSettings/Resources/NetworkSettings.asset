@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f151e1bdfa3184aaca5e49bdd4b060, type: 3}
   m_Name: NetworkSettings
   m_EditorClassIdentifier: Assembly-CSharp::NetworkSettings
-  <IpAddress>k__BackingField: 127.0.0.1
+  <IpAddress>k__BackingField: 192.168.137.1
   <Port>k__BackingField: 7777

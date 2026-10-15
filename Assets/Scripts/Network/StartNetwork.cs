@@ -30,6 +30,7 @@ public class StartNetwork : MonoBehaviour
         ipAddress = networkSettings.IpAddress;
 #if UNITY_STANDALONE_WIN //|| UNITY_EDITOR
             //experienceManager.RemovePanelAndAvatar();
+            StartServer();
 #else
         /*if(SceneManager.GetActiveScene().name == "XRRoomUpdate") */
         StartCoroutine(WaitForStartClient());
